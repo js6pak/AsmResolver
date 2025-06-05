@@ -329,7 +329,7 @@ namespace AsmResolver.PE.File
         /// </summary>
         /// <param name="fileOffset">The file offset to start reading at.</param>
         /// <returns>The reader.</returns>
-        public BinaryStreamReader CreateReaderAtFileOffset(uint fileOffset)
+        public BinaryStreamReader CreateReaderAtFileOffset(ulong fileOffset)
         {
             return !TryCreateReaderAtFileOffset(fileOffset, out var reader)
                 ? throw new ArgumentOutOfRangeException(nameof(fileOffset))
@@ -342,7 +342,7 @@ namespace AsmResolver.PE.File
         /// <param name="fileOffset">The file offset to start reading at.</param>
         /// <param name="reader">The reader that was created.</param>
         /// <returns><c>true</c> if the reader was created successfully, <c>false</c> otherwise.</returns>
-        public bool TryCreateReaderAtFileOffset(uint fileOffset, out BinaryStreamReader reader)
+        public bool TryCreateReaderAtFileOffset(ulong fileOffset, out BinaryStreamReader reader)
         {
             if (TryGetSectionContainingOffset(fileOffset, out var section))
             {
@@ -368,7 +368,7 @@ namespace AsmResolver.PE.File
         /// <param name="fileOffset">The file offset to start reading at.</param>
         /// <param name="size">The number of bytes in the chunk.</param>
         /// <returns>The reader.</returns>
-        public BinaryStreamReader CreateReaderAtFileOffset(uint fileOffset, uint size)
+        public BinaryStreamReader CreateReaderAtFileOffset(ulong fileOffset, uint size)
         {
             var section = GetSectionContainingOffset(fileOffset);
             return section.CreateReader(fileOffset, size);
@@ -381,7 +381,7 @@ namespace AsmResolver.PE.File
         /// <param name="size">The number of bytes in the chunk.</param>
         /// <param name="reader">The reader that was created.</param>
         /// <returns><c>true</c> if the reader was created successfully, <c>false</c> otherwise.</returns>
-        public bool TryCreateReaderAtFileOffset(uint fileOffset, uint size, out BinaryStreamReader reader)
+        public bool TryCreateReaderAtFileOffset(ulong fileOffset, uint size, out BinaryStreamReader reader)
         {
             if (TryGetSectionContainingOffset(fileOffset, out var section))
             {
