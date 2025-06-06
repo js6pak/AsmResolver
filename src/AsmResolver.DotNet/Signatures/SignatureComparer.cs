@@ -17,6 +17,11 @@ namespace AsmResolver.DotNet.Signatures
         public static SignatureComparer Default { get; } = new();
 
         /// <summary>
+        /// An immutable instance of <see cref="SignatureComparer"/> with <see cref="SignatureComparisonFlags.VersionAgnostic"/> flag.
+        /// </summary>
+        public static SignatureComparer VersionAgnostic { get; } = new(SignatureComparisonFlags.VersionAgnostic);
+
+        /// <summary>
         /// Flags for controlling comparison behavior.
         /// </summary>
         public SignatureComparisonFlags Flags { get; }
