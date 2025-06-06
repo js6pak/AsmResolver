@@ -532,12 +532,9 @@ namespace AsmResolver.DotNet
                 return method;
 
             var memberRef = ImportMethod(method.Method);
+            var signature = ImportGenericInstanceMethodSignature(method.Signature);
 
-            var instantiation = new GenericInstanceMethodSignature();
-            foreach (var argument in method.Signature.TypeArguments)
-                instantiation.TypeArguments.Add(ImportTypeSignature(argument));
-
-            return new MethodSpecification(memberRef, instantiation);
+            return new MethodSpecification(memberRef, signature);
         }
 
         /// <summary>
