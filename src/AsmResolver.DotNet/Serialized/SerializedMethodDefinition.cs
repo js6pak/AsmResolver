@@ -107,6 +107,9 @@ namespace AsmResolver.DotNet.Serialized
             _context.Parameters.MethodBodyReader.ReadMethodBody(_context, this, _row);
 
         /// <inheritdoc />
+        public override bool HasMethodBody => _row.Body != SegmentReference.Null || base.HasMethodBody;
+
+        /// <inheritdoc />
         protected override ImplementationMap? GetImplementationMap()
         {
             uint mapRid = _context.ParentModule.GetImplementationMapRid(MetadataToken);

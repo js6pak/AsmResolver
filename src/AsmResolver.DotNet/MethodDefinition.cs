@@ -632,7 +632,7 @@ namespace AsmResolver.DotNet
         /// <see cref="MethodBody"/> property is not <c>null</c>.
         /// </summary>
         [MemberNotNullWhen(true, nameof(MethodBody))]
-        public bool HasMethodBody => MethodBody is not null;
+        public virtual bool HasMethodBody => _methodBody.IsInitialized && MethodBody is not null;
 
         /// <summary>
         /// Gets or sets the body of the method.
