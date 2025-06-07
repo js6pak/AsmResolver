@@ -110,9 +110,9 @@ namespace AsmResolver.DotNet.Builder.Metadata
         public IDictionary<uint, uint> Optimize()
         {
             uint finalOffset = 1;
-            var newIndex = new Dictionary<Utf8String, StringIndex>();
+            var newIndex = new Dictionary<Utf8String, StringIndex>(_blobs.Count);
             var newBlobs = new List<StringsStreamBlob>(_fixedBlobCount);
-            var translationTable = new Dictionary<uint, uint>
+            var translationTable = new Dictionary<uint, uint>(_blobs.Count)
             {
                 [0] = 0
             };

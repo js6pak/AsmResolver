@@ -22,7 +22,7 @@ namespace AsmResolver.DotNet.Builder.Metadata
         /// </summary>
         private readonly List<(TKey Key, TRow Row, int InputIndex)> _entries = new();
 
-        private readonly Dictionary<TKey, MetadataToken> _newTokens = new();
+        private Dictionary<TKey, MetadataToken>? _newTokens;
         private readonly MetadataTable<TRow> _table;
         private readonly EntryComparer _comparer;
 
@@ -64,6 +64,8 @@ namespace AsmResolver.DotNet.Builder.Metadata
         public void Sort()
         {
             _entries.Sort(_comparer);
+
+            _newTokens = new Dictionary<TKey, MetadataToken>(_entries.Count);
 
             for (uint rid = 1; rid <= _entries.Count; rid++)
             {

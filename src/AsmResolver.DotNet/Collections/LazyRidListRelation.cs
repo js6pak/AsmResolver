@@ -68,7 +68,7 @@ namespace AsmResolver.DotNet.Collections
                 // This is to prevent a very nasty but subtle race condition (and also a data race) from happening, where
                 // EnsureIsInitialized might return prematurely before the lists are fully initialized.
                 // See: https://github.com/Washi1337/AsmResolver/issues/299
-                var memberRanges = new Dictionary<uint, MetadataRange>();
+                var memberRanges = new Dictionary<uint, MetadataRange>(associationTable.Count);
                 uint[] memberOwnerRids = new uint[memberTable.Count];
 
                 for (int i = 0; i < associationTable.Count; i++)

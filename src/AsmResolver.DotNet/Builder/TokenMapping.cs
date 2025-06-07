@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using AsmResolver.Collections;
 using AsmResolver.PE.DotNet.Metadata.Tables;
+using AsmResolver.Shims;
 
 namespace AsmResolver.DotNet.Builder
 {
@@ -95,6 +96,34 @@ namespace AsmResolver.DotNet.Builder
                     break;
                 default:
                     _remainingTokens.Add(member, newToken);
+                    break;
+            }
+        }
+
+        public void EnsureCapacity(TableIndex tableIndex, int capacity)
+        {
+            switch (tableIndex)
+            {
+                case TableIndex.TypeDef:
+                    _typeDefTokens.EnsureCapacity(capacity);
+                    break;
+                case TableIndex.Field:
+                    _fieldTokens.EnsureCapacity(capacity);
+                    break;
+                case TableIndex.Method:
+                    _methodTokens.EnsureCapacity(capacity);
+                    break;
+                case TableIndex.Param:
+                    _parameterTokens.EnsureCapacity(capacity);
+                    break;
+                case TableIndex.Event:
+                    _eventTokens.EnsureCapacity(capacity);
+                    break;
+                case TableIndex.Property:
+                    _propertyTokens.EnsureCapacity(capacity);
+                    break;
+                default:
+                    _remainingTokens.EnsureCapacity(capacity);
                     break;
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AsmResolver.Shims;
 
 namespace AsmResolver.Collections
 {
@@ -50,6 +51,14 @@ namespace AsmResolver.Collections
             }
 
             return false;
+        }
+
+        /// <summary>Ensures that the mapping can hold up to a specified number of entries without any further expansion of its backing storage.</summary>
+        /// <param name="capacity">The number of entries.</param>
+        public void EnsureCapacity(int capacity)
+        {
+            _keyToValue.EnsureCapacity(capacity);
+            _valueToKey.EnsureCapacity(capacity);
         }
 
         /// <summary>

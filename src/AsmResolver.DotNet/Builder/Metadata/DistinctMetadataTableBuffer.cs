@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AsmResolver.PE.DotNet.Metadata.Tables;
+using AsmResolver.Shims;
 
 namespace AsmResolver.DotNet.Builder.Metadata
 {
@@ -47,10 +48,7 @@ namespace AsmResolver.DotNet.Builder.Metadata
         public void EnsureCapacity(int capacity)
         {
             _underlyingBuffer.EnsureCapacity(capacity);
-
-#if NETSTANDARD2_1_OR_GREATER
             _entries.EnsureCapacity(capacity);
-#endif
         }
 
         /// <inheritdoc />

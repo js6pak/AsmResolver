@@ -143,7 +143,11 @@ namespace AsmResolver.DotNet.Builder
             var typeDefTable = Metadata.TablesStream.GetTable<TypeDefinitionRow>(TableIndex.TypeDef);
 
             if (types is ICollection<TypeDefinition> collection)
-                typeDefTable.EnsureCapacity(typeDefTable.Count + collection.Count);
+            {
+                int capacity = typeDefTable.Count + collection.Count;
+                typeDefTable.EnsureCapacity(capacity);
+                _tokenMapping.EnsureCapacity(TableIndex.TypeDef, capacity);
+            }
 
             foreach (var type in types)
             {
@@ -171,7 +175,11 @@ namespace AsmResolver.DotNet.Builder
         {
             var table = Metadata.TablesStream.GetTable<FieldDefinitionRow>(TableIndex.Field);
             if (fields is ICollection<FieldDefinition> collection)
-                table.EnsureCapacity(table.Count + collection.Count);
+            {
+                int capacity = table.Count + collection.Count;
+                table.EnsureCapacity(capacity);
+                _tokenMapping.EnsureCapacity(TableIndex.Field, capacity);
+            }
 
             foreach (var field in fields)
             {
@@ -194,7 +202,11 @@ namespace AsmResolver.DotNet.Builder
         {
             var table = Metadata.TablesStream.GetTable<MethodDefinitionRow>(TableIndex.Method);
             if (methods is ICollection<MethodDefinition> collection)
-                table.EnsureCapacity(table.Count + collection.Count);
+            {
+                int capacity = table.Count + collection.Count;
+                table.EnsureCapacity(capacity);
+                _tokenMapping.EnsureCapacity(TableIndex.Method, capacity);
+            }
 
             foreach (var method in methods)
             {
@@ -229,7 +241,11 @@ namespace AsmResolver.DotNet.Builder
         {
             var table = Metadata.TablesStream.GetTable<ParameterDefinitionRow>(TableIndex.Param);
             if (parameters is ICollection<ParameterDefinition> collection)
-                table.EnsureCapacity(table.Count + collection.Count);
+            {
+                int capacity = table.Count + collection.Count;
+                table.EnsureCapacity(capacity);
+                _tokenMapping.EnsureCapacity(TableIndex.Param, capacity);
+            }
 
             foreach (var parameter in parameters)
             {
@@ -251,7 +267,11 @@ namespace AsmResolver.DotNet.Builder
         {
             var table = Metadata.TablesStream.GetTable<PropertyDefinitionRow>(TableIndex.Property);
             if (properties is ICollection<PropertyDefinition> collection)
-                table.EnsureCapacity(table.Count + collection.Count);
+            {
+                int capacity = table.Count + collection.Count;
+                table.EnsureCapacity(capacity);
+                _tokenMapping.EnsureCapacity(TableIndex.Property, capacity);
+            }
 
             foreach (var property in properties)
             {
@@ -273,7 +293,11 @@ namespace AsmResolver.DotNet.Builder
         {
             var table = Metadata.TablesStream.GetTable<EventDefinitionRow>(TableIndex.Event);
             if (events is ICollection<EventDefinition> collection)
-                table.EnsureCapacity(table.Count + collection.Count);
+            {
+                int capacity = table.Count + collection.Count;
+                table.EnsureCapacity(capacity);
+                _tokenMapping.EnsureCapacity(TableIndex.Event, capacity);
+            }
 
             foreach (var @event in events)
             {
