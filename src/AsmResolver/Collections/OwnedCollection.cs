@@ -24,6 +24,7 @@ namespace AsmResolver.Collections
         public OwnedCollection(TOwner owner)
         {
             Owner = owner ?? throw new ArgumentNullException(nameof(owner));
+            IsInitialized = true;
         }
 
         /// <summary>
@@ -35,6 +36,7 @@ namespace AsmResolver.Collections
             : base(capacity)
         {
             Owner = owner ?? throw new ArgumentNullException(nameof(owner));
+            IsInitialized = true;
         }
 
         /// <summary>

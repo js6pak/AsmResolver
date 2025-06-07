@@ -77,7 +77,7 @@ namespace AsmResolver.Collections
         protected bool IsInitialized
         {
             get;
-            private set;
+            set;
         }
 
         /// <summary>
