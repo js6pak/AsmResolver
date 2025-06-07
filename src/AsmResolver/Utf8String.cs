@@ -37,6 +37,12 @@ namespace AsmResolver
         {
         }
 
+        // TODO find a better way to do this
+        internal Utf8String(byte[] data, bool createUnsafe)
+        {
+            _data = data;
+        }
+
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
         /// <summary>
         /// Creates a new UTF-8 string from the provided raw data.
