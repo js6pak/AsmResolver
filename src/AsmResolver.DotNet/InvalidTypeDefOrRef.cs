@@ -83,6 +83,9 @@ namespace AsmResolver.DotNet
         ITypeDefOrRef ITypeDefOrRef.ImportWith(ReferenceImporter importer) => throw new InvalidOperationException();
 
         /// <inheritdoc />
+        IMemberDescriptor IMemberDescriptor.ImportWith(ReferenceImporter importer) => throw new InvalidOperationException();
+
+        /// <inheritdoc />
         IImportable IImportable.ImportWith(ReferenceImporter importer) => throw new InvalidOperationException();
 
         IMemberDefinition? IMemberDescriptor.Resolve() => null;

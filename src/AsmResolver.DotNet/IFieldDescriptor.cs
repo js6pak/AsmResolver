@@ -24,6 +24,13 @@ namespace AsmResolver.DotNet
         }
 
         /// <summary>
+        /// Imports the field using the provided reference importer object.
+        /// </summary>
+        /// <param name="importer">The reference importer to use.</param>
+        /// <returns>The imported field.</returns>
+        new IFieldDescriptor ImportWith(ReferenceImporter importer);
+
+        /// <summary>
         /// Resolves the reference to a field definition.
         /// </summary>
         /// <returns>The resolved field definition, or <c>null</c> if the field could not be resolved.</returns>

@@ -14,6 +14,13 @@ namespace AsmResolver.DotNet
         }
 
         /// <summary>
+        /// Imports the member using the provided reference importer object.
+        /// </summary>
+        /// <param name="importer">The reference importer to use.</param>
+        /// <returns>The imported member.</returns>
+        new IMemberDescriptor ImportWith(ReferenceImporter importer);
+
+        /// <summary>
         /// Resolves the reference to a member definition.
         /// </summary>
         /// <returns>The resolved member definition, or <c>null</c> if the member could not be resolved.</returns>

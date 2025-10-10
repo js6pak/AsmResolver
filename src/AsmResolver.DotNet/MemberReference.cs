@@ -176,6 +176,18 @@ namespace AsmResolver.DotNet
             : (MemberReference) importer.ImportField(this);
 
         /// <inheritdoc />
+        IMethodDefOrRef IMethodDefOrRef.ImportWith(ReferenceImporter importer) => ImportWith(importer);
+
+        /// <inheritdoc />
+        IMethodDescriptor IMethodDescriptor.ImportWith(ReferenceImporter importer) => ImportWith(importer);
+
+        /// <inheritdoc />
+        IFieldDescriptor IFieldDescriptor.ImportWith(ReferenceImporter importer) => ImportWith(importer);
+
+        /// <inheritdoc />
+        IMemberDescriptor IMemberDescriptor.ImportWith(ReferenceImporter importer) => ImportWith(importer);
+
+        /// <inheritdoc />
         IImportable IImportable.ImportWith(ReferenceImporter importer) => ImportWith(importer);
 
         FieldDefinition? IFieldDescriptor.Resolve() => ContextModule is { } context

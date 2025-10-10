@@ -24,6 +24,13 @@ namespace AsmResolver.DotNet
         }
 
         /// <summary>
+        /// Imports the method using the provided reference importer object.
+        /// </summary>
+        /// <param name="importer">The reference importer to use.</param>
+        /// <returns>The imported method.</returns>
+        new IMethodDescriptor ImportWith(ReferenceImporter importer);
+
+        /// <summary>
         /// Resolves the reference to a method definition.
         /// </summary>
         /// <returns>The resolved method definition, or <c>null</c> if the method could not be resolved.</returns>
