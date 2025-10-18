@@ -1,0 +1,9 @@
+{
+    "$schema": "https://json.schemastore.org/launchsettings.json",
+    "profiles": {
+        "LazyGenerator": {
+            "commandName": "DebugRoslynComponent",
+            "targetProject": "../AsmResolver.DotNet/AsmResolver.DotNet.csproj"
+        }
+    }
+}

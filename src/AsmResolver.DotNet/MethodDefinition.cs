@@ -16,7 +16,7 @@ namespace AsmResolver.DotNet
     /// <summary>
     /// Represents a single method in a type definition of a .NET module.
     /// </summary>
-    public class MethodDefinition :
+    public partial class MethodDefinition :
         MetadataMember,
         IMemberDefinition,
         IOwnedCollectionElement<TypeDefinition>,
@@ -27,7 +27,7 @@ namespace AsmResolver.DotNet
         IHasSecurityDeclaration,
         IManagedEntryPoint
     {
-        private readonly LazyVariable<MethodDefinition, Utf8String?> _name;
+        private readonly object _lock = new();
         private readonly LazyVariable<MethodDefinition, TypeDefinition?> _declaringType;
         private readonly LazyVariable<MethodDefinition, MethodSignature?> _signature;
         private readonly LazyVariable<MethodDefinition, MethodBody?> _methodBody;
@@ -47,7 +47,6 @@ namespace AsmResolver.DotNet
         protected MethodDefinition(MetadataToken token)
             : base(token)
         {
-            _name = new LazyVariable<MethodDefinition, Utf8String?>(x => x.GetName());
             _declaringType = new LazyVariable<MethodDefinition, TypeDefinition?>(x => x.GetDeclaringType());
             _signature = new LazyVariable<MethodDefinition, MethodSignature?>(x => x.GetSignature());
             _methodBody = new LazyVariable<MethodDefinition, MethodBody?>(static x =>
@@ -119,11 +118,8 @@ namespace AsmResolver.DotNet
         /// <remarks>
         /// This property corresponds to the Name column in the method definition table.
         /// </remarks>
-        public Utf8String? Name
-        {
-            get => _name.GetValue(this);
-            set => _name.SetValue(value);
-        }
+        [Lazy(nameof(GetName))]
+        public partial Utf8String? Name { get; set; }
 
         string? INameProvider.Name => Name;
 
