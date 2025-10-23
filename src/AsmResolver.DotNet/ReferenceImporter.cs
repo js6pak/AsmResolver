@@ -34,7 +34,7 @@ namespace AsmResolver.DotNet
         /// </summary>
         /// <param name="scope">The resolution scope to import.</param>
         /// <returns>The imported resolution scope.</returns>
-        public IResolutionScope ImportScope(IResolutionScope scope)
+        public virtual IResolutionScope ImportScope(IResolutionScope scope)
         {
             if (scope is null)
                 throw new ArgumentNullException(nameof(scope));
@@ -56,7 +56,7 @@ namespace AsmResolver.DotNet
         /// </summary>
         /// <param name="implementation">The implementation reference to import.</param>
         /// <returns>The imported implementation reference.</returns>
-        public IImplementation ImportImplementation(IImplementation? implementation)
+        public virtual IImplementation ImportImplementation(IImplementation? implementation)
         {
             if (implementation is null)
                 throw new ArgumentNullException(nameof(implementation));
